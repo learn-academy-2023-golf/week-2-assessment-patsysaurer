@@ -1,5 +1,7 @@
 // ASSESSMENT 2: Coding Practical Questions with Jest
 
+// const { describe } = require("yargs")
+
 // Please read all questions thoroughly
 // If you get stuck, leave comments to help us understand your thought process
 
@@ -25,27 +27,71 @@ const numbersArray2 = [24, 27, 30, 33, 36]
 // --------------------1) Create a function that takes a object as an argument and decides if the number inside it is evenly divisible by three or not.
 
 // a) Create a test with expect statements for each of the variables provided.
+describe("divisibleByThree", () => {
+    it("takes a object as an argument and decides if the number inside it is evenly divisible by three or not", () => {
 
-const object1 = { number: 15 }
-// Expected output: "15 is divisible by three"
-const object2 = { number: 0 }
-// Expected output: "0 is divisible by three"
-const object3 = { number: -7 }
-// Expected output: "-7 is not divisible by three"
+        const object1 = { number: 15 }
+        // Expected output: "15 is divisible by three"
+        const object2 = { number: 0 }
+        // Expected output: "0 is divisible by three"
+        const object3 = { number: -7 }
+        // Expected output: "-7 is not divisible by three"  
+
+      expect(divisibleByThree(object1.number)).toEqual("15 is divisible by three")
+      expect(divisibleByThree(object2.number)).toEqual("0 is divisible by three")
+      expect(divisibleByThree(object3.number)).toEqual("-7 is not divisible by three")
+    })
+  })
+
+//   ReferenceError: divisibleByThree is not defined
+
 
 // b) Create the function that makes the test pass.
 
 // Pseudo code:
+// Create a function named divisibleByThree
+// Input: object 
+// Output: string decision 
+const divisibleByThree = (object) => {
+    // use a condtional and the modulo 
+    if(object % 3 === 0){
+        // return a string interpolation 
+        return `${object} is divisible by three` 
+    } else {
+        return `${object} is not divisible by three`
+    }
+}
 
 // --------------------2) Create a function that takes in an array of words and returns an array with all the words capitalized.
 
 // a) Create a test with expect statements for each of the variables provided.
 
-const randomNouns1 = ["streetlamp", "potato", "teeth", "conclusion", "nephew"]
-// Expected output: ["Streetlamp", "Potato", "Teeth", "Conclusion", "Nephew"]
-const randomNouns2 = ["temperature", "database", "chopsticks", "mango"]
-// Expected output: ["Temperature", "Database", "Chopsticks", "Mango"]
+describe("capitalizedWords", () => {
+    it("takes in an array of words and returns an array with all the words capitalized", () => {
+        const randomNouns1 = ["streetlamp", "potato", "teeth", "conclusion", "nephew"]
+        // Expected output: ["Streetlamp", "Potato", "Teeth", "Conclusion", "Nephew"]
+        const randomNouns2 = ["temperature", "database", "chopsticks", "mango"]
+        // Expected output: ["Temperature", "Database", "Chopsticks", "Mango"]
+      expect(capitalizedWords(randomNouns1)).toEqual(["Streetlamp", "Potato", "Teeth", "Conclusion", "Nephew"])
+      expect(capitalizedWords(randomNouns2)).toEqual(["Temperature", "Database", "Chopsticks", "Mango"])
+    })
+  })
+
+//   ReferenceError: capitalizedWords is not defined
 
 // b) Create the function that makes the test pass.
 
 // Pseudo code:
+// Create a function named capitalizedWords
+// Input: array
+// Output: array with all words capitalized
+const capitalizedWords = (array) => {
+    // iterate using .map() 
+    return array.map(word => {
+        // each iteration use the .toUppercase()
+        
+       return word[0].toUppercase()
+    })
+}
+
+// I need more practice with Jest!
